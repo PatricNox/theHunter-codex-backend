@@ -1,0 +1,61 @@
+image: ucsit/php7.4
+
+pipelines:
+  pull-requests:
+    '**':
+    - step:
+        name: 'Validate dependencies'
+        script:
+          - cd laravel
+          - composer validate --no-check-all --strict
+    - step:
+        name: 'Install dependencies'
+        caches:
+          - composer
+        script:
+          - cd laravel
+          - composer install
+        artifacts:
+          - laravel/**
+    - step:
+        name: 'Configure pipeline environment file'
+        caches:
+          - composer
+        script:
+          - cp laravel/.env.bitbucket.pipelines laravel/.env
+          - php laravel/artisan config:cache
+        artifacts:
+          - laravel/**
+    - step:
+        name: 'Test migrations'
+        artifacts:
+          - laravel/**
+        script:
+          - echo "memory_limit = 512M" > $PHP_INI_DIR/conf.d/php-memory-limits.ini
+          - php laravel/artisan migrate 
+        services:
+          - mysql
+    - step:
+        name: 'Test seeds'
+        artifacts:
+          - laravel/**
+        script:
+          - echo "memory_limit = 512M" > $PHP_INI_DIR/conf.d/php-memory-limits.ini
+          - php laravel/artisan migrate --seed
+        services:
+          - mysql
+    - step:
+        name: 'Test code standard'
+        artifacts:
+          - laravel/**
+        script:
+          - cd laravel
+          - vendor/bin/phpcs
+
+definitions:
+  services:
+    mysql:
+      image: mysql:5.7
+      environment:
+        MYSQL_DATABASE: 'laravel'
+        MYSQL_ROOT_PASSWORD: 'pipelinerootuser1337'

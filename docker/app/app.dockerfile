@@ -49,9 +49,6 @@ COPY app/php/app.ini /usr/local/etc/php/conf.d/
 # Copy the Apache configuration
 COPY app/apache/app.conf /etc/apache2/sites-available/000-default.conf
 
-# Add init file to MySQL
-ADD app/mysql/init.sql /docker-entrypoint-initdb.d
-
 # Enable Apache mods
 RUN a2enmod rewrite
 

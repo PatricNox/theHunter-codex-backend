@@ -20,7 +20,6 @@ Route::fallback(function () {
     return response()->json([__('error') => __('Route doesn\'t exist.')], 404);
 });
 
-
 /* Auth */
 // Route::post('auth', [Api\Auth\AuthController::class, 'authenticate']);
 // Route::middleware('auth:system')->group(function () {

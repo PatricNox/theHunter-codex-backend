@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\AnimalClass;
+use App\Models\Trophy;
+use App\Models\WeaponType;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +16,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(InitialDataSeeder::class);
+        $this->baseDataSeed();
+        $this->call(MapSeeder::class);
+        $this->call(AnimalSeeder::class);
+        $this->call(WeaponAndAmmunitionSeeder::class);
+    }
+
+    private function baseDataSeed()
+    {
+        // There's 9 classes per initial instructions.
+        for ($i = 0; $i < 9; $i++) {
+            AnimalClass::create();
+        }
+
+        // Obtained from provided sheet.
+        $types = ['rifle', 'handgun', 'shotgun', 'bow'];
+        foreach ($types as $type) {
+            WeaponType::create(['name' => $type]);
+        }
+
+        // Obtained from provided sheet.
+        $trophies = ['weight', 'combined', 'tusks', 'horns', 'skull', 'antlers', 'length'];
+        foreach ($trophies as $trophy) {
+            Trophy::create(['type' => $trophy]);
+        }
     }
 }

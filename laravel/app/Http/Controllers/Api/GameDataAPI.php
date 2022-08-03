@@ -19,9 +19,9 @@ class GameDataAPI extends \App\Http\Controllers\Controller
      *
      * @return \App\Http\Resources\Map
      */
-    public function maps(): \App\Http\Resources\Map
+    public function maps()
     {
-        return new MapCollection(Map::all());
+        return MapCollection::collection(Map::all());
     }
 
     /**
@@ -49,9 +49,9 @@ class GameDataAPI extends \App\Http\Controllers\Controller
 
         return;
         return response()->json([
-            'animals' => new AnimalCollection($map->animals),
-            'weapons' => new WeaponCollection($weapons),
-            'ammunition' => new AmmunitionCollection($ammunitions),
+            'animals' => AnimalCollection::collection($map->animals),
+            'weapons' => WeaponCollection::collection($weapons),
+            'ammunition' => AmmunitionCollection::collection($ammunitions),
         ], 200);
     }
 }

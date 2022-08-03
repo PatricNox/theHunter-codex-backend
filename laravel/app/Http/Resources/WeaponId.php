@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
 
-class WeaponId extends ResourceCollection
+class WeaponId extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,5 +16,6 @@ class WeaponId extends ResourceCollection
     {
         return [
             'id' => $this->id,
+        ];
     }
 }

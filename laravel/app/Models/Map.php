@@ -11,7 +11,8 @@ class Map extends Base\BaseModel
      */
     protected $fillable = [
         'map_id',
-        'animal_id',
+        'name',
+        'mediaUrl',
     ];
 
     /**

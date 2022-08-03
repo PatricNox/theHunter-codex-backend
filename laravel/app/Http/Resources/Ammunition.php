@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class RaidBoss extends JsonResource
+class Ammunition extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +17,9 @@ class RaidBoss extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'mediaUrl' => $this->media_url,
-            'raid' =>  $this->raid->id,
+            'ammunitionNo' => $this->ammunition_no,
+            'class' => $this->animalClass,
+            'weapons' => new WeaponId($this->weapons),
         ];
     }
 }

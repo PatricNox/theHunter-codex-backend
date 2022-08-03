@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class Raid extends JsonResource
+class Map extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
@@ -12,14 +12,11 @@ class Raid extends JsonResource
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray($request)
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'expansion' => $this->expansion->id,
-            'mediaUrl' => $this->media_url,
-            'bosses' => RaidBoss::collection($this->bosses),
+            'isDLC' => $this->is_dlc,
         ];
     }
 }

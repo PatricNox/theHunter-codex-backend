@@ -2,9 +2,9 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class User extends JsonResource
+class Weapon extends ResourceCollection
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +16,11 @@ class User extends JsonResource
     {
         return [
             'id' => $this->id,
-            'firstname' => $this->firstname,
-            'lastname' =>  $this->lastname,
-            'email' => $this->email,
+            'name' => $this->name,
+            'weaponNo' => $this->weapon_no,
+            'type' => $this->type->name,
+            'class' => $this->animalClass,
+            'isDLC' => $this->is_dlc,
         ];
     }
 }

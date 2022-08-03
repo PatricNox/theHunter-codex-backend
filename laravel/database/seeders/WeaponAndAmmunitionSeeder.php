@@ -27,7 +27,7 @@ class WeaponAndAmmunitionSeeder extends Seeder
             ]);
 
             foreach (explode(',', $weapon['class']) as $class) {
-                $model->animalClass()->attach(AnimalClass::find($class)->first());
+                $model->animalClass()->attach(AnimalClass::find($class));
             }
         }
 
@@ -40,11 +40,11 @@ class WeaponAndAmmunitionSeeder extends Seeder
             ]);
 
             foreach (explode(',', $ammunition['class']) as $class) {
-                $model->animalClass()->attach(AnimalClass::find($class)->first());
+                $model->animalClass()->attach(AnimalClass::find($class));
             }
 
             foreach (explode(',', $ammunition['weapon']) as $weapon) {
-                $model->weapons()->attach(Weapon::find($weapon)->first());
+                $model->weapons()->attach(Weapon::find($weapon));
             }
         }
     }

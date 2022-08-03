@@ -34,8 +34,9 @@ class AnimalSeeder extends Seeder
                 'diamond' => $animal['diamond'],
             ]);
 
-            foreach (explode(',', $animal['map']) as $mapId) {
-                $model->maps()->attach(Map::find($mapId)->first());
+            $maps = explode(',', $animal['map']);
+            foreach ($maps as $mapId) {
+                $model->maps()->attach(Map::find($mapId));
             }
         }
     }

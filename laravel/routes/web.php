@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Ammunition;
+use App\Models\Animal;
+use App\Models\Map;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/animals', function () {
+    return Animal::all();
+});
+
+Route::get('/ammo', function () {
+    return Ammunition::all();
+});
+
+Route::get('/map', function () {
+    return Map::all();
 });

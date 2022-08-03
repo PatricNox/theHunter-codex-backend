@@ -20,6 +20,9 @@ Route::fallback(function () {
     return response()->json([__('error') => __('Route doesn\'t exist.')], 404);
 });
 
+Route::get('maps', [Api\GameDataAPI::class, 'maps']);
+Route::get('map/{map}', [Api\GameDataAPI::class, 'loadMap']);
+
 /* Auth */
 // Route::post('auth', [Api\Auth\AuthController::class, 'authenticate']);
 // Route::middleware('auth:system')->group(function () {

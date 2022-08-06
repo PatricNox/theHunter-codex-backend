@@ -31,7 +31,7 @@ class Animal extends Base\BaseModel
      */
     public function trophy()
     {
-        return $this->hasOne(Trophy::class);
+        return $this->belongsTo(Trophy::class);
     }
 
     /**
@@ -48,5 +48,31 @@ class Animal extends Base\BaseModel
     public function animalClass()
     {
         return $this->belongsTo(AnimalClass::class);
+    }
+
+    /**
+     * Get the weapons used for the animal.
+     */
+    public function getWeaponsAttribute()
+    {
+        $animalClass = $this->animalClass->id;
+        return
+            Weapon::whereRelation(
+                'animalClass',
+                function ($query) use ($animalClass) {
+                    return $query->where('animal_classes.id', $animalClass);
+                }
+            )->get();
+    }
+
+    /**
+     * Get the weapons used for the animal.
+     */
+    public function getAmmunitionAttribute()
+    {
+        $ammunition = [];
+        foreach ($this->weapons as $weapon) {
+            array_push($ammunition, $weapon->ammunition);
+        }
     }
 }

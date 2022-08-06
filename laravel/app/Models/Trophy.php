@@ -10,6 +10,7 @@ class Trophy extends Base\BaseModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'animal_id',
         'type',
     ];
 }

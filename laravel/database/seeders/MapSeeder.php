@@ -15,22 +15,26 @@ class MapSeeder extends Seeder
     public function run()
     {
         $maps = [
-            'Hirschfelden Hunting Reserve' => 0,
-            'Layton Lake District' => 0,
-            'Medved Taiga National Park' => 1,
-            'Vurhonga Savanna Reserve' => 1,
-            'Parque Fernando' => 1,
-            'Yukon Valley' => 1,
-            'Cuatro Colinas Game Reserve' => 1,
-            'Silver Ridge Peaks' => 1,
-            'Te Awaroa National Park' => 1,
-            'Rancho del Arroyo' => 1,
-            'Mississippi Acres Preserve' => 1,
-            'Revontuli Coast' => 1,
+            'Hirschfelden Hunting Reserve' => ['is_dlc' => 0, 'media_url' => "hirschfelden.png"],
+            'Layton Lake District' => ['is_dlc' => 0, 'media_url' => "layton.png"],
+            'Medved Taiga National Park' => ['is_dlc' => 1, 'media_url' => "medved.png"],
+            'Vurhonga Savanna Reserve' => ['is_dlc' => 1, 'media_url' => "vurhonga.png"],
+            'Parque Fernando' => ['is_dlc' => 1, 'media_url' => "parque.png"],
+            'Yukon Valley' => ['is_dlc' => 1, 'media_url' => "yukon.png"],
+            'Cuatro Colinas Game Reserve' => ['is_dlc' => 1, 'media_url' => "cuatro.png"],
+            'Silver Ridge Peaks' => ['is_dlc' => 1, 'media_url' => "silver.png"],
+            'Te Awaroa National Park' => ['is_dlc' => 1, 'media_url' => "awaroa.png"],
+            'Rancho del Arroyo' => ['is_dlc' => 1, 'media_url' => "rancho.png"],
+            'Mississippi Acres Preserve' => ['is_dlc' => 1, 'media_url' => "mississippi.png"],
+            'Revontuli Coast' => ['is_dlc' => 1, 'media_url' => "revontuli.png"],
         ];
 
-        foreach ($maps as $map => $is_dlc) {
-            Map::create(['name' => $map, 'is_dlc' => $is_dlc]);
+        foreach ($maps as $map => $data) {
+            Map::create([
+                'name' => $map,
+                'media_url' => $data['media_url'],
+                'is_dlc' => $data['is_dlc']
+            ]);
         }
     }
 }

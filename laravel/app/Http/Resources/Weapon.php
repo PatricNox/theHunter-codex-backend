@@ -18,9 +18,9 @@ class Weapon extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'weaponNo' => $this->weapon_no,
-            'type' => $this->type->name,
+            'type' => $this->type,
             'class' => $this->animalClass,
-            'isDLC' => $this->is_dlc,
+            'ammunition' => Ammunition::collection($this->ammunition),
         ];
     }
 }

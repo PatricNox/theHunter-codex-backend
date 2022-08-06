@@ -17,7 +17,7 @@ class CreateBaseTables extends Migration
         Schema::create('maps', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('mediaUrl')->nullable();
+            $table->string('media_url')->nullable();
             $table->boolean('is_dlc')->default(false);
         });
 

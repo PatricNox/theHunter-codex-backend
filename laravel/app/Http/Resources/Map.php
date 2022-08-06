@@ -17,6 +17,7 @@ class Map extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'mediaUrl' => $this->media_url,
             'isDLC' => $this->is_dlc,
         ];
     }

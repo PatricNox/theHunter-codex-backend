@@ -21,8 +21,8 @@ class Animal extends JsonResource
             'ratings' => new AnimalRating($this->ratings),
             'maxDifficulty' => $this->max_difficulty,
             'maxWeight' => $this->max_weight,
-            'class' => $this->animalClass->id, // probably need migration fix
-            'isDLC' => $this->is_dlc,
+            'class' => $this->animalClass->id,
+            'weapons' => Weapon::collection($this->weapons),
         ];
     }
 }

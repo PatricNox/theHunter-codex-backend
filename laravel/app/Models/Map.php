@@ -12,7 +12,7 @@ class Map extends Base\BaseModel
     protected $fillable = [
         'map_id',
         'name',
-        'mediaUrl',
+        'media_url',
     ];
 
     /**

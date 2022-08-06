@@ -21,7 +21,7 @@ class Weapon extends Base\BaseModel
      */
     public function type()
     {
-        return $this->hasOne(WeaponType::class);
+        return $this->belongsTo(WeaponType::class);
     }
 
     /**

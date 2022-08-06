@@ -18,8 +18,6 @@ class Ammunition extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'ammunitionNo' => $this->ammunition_no,
-            'class' => $this->animalClass,
-            'weapons' => new WeaponId($this->weapons),
         ];
     }
 }

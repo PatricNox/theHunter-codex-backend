@@ -20,8 +20,8 @@ class WeaponAndAmmunitionSeeder extends Seeder
         $weapons = $this->weaponData();
         foreach ($weapons as $weapon) {
             $model = Weapon::create([
+                'id' => $weapon['weapon_no'],
                 'name' => $weapon['name'],
-                'weapon_no' => $weapon['weapon_no'],
                 'weapon_type_id' => WeaponType::where('name', $weapon['type'])->first()->id,
                 'is_dlc' => $weapon['dlc'],
             ]);
@@ -35,8 +35,8 @@ class WeaponAndAmmunitionSeeder extends Seeder
         $ammunitions = $this->ammunitionData();
         foreach ($ammunitions as $ammunition) {
             $model = Ammunition::create([
+                'id' => $ammunition['ammunition_no'],
                 'name' => $ammunition['name'],
-                'ammunition_no' => $ammunition['ammunition_no'],
             ]);
 
             foreach (explode(',', $ammunition['class']) as $class) {

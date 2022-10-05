@@ -39,7 +39,6 @@ class CreateBaseTables extends Migration
         Schema::create('ammunitions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('ammunition_no');
         });
 
         Schema::create('animals', function (Blueprint $table) {
@@ -66,7 +65,6 @@ class CreateBaseTables extends Migration
             $table->id();
             $table->foreignId('weapon_type_id')->constrained();
             $table->string('name');
-            $table->string('weapon_no');
             $table->boolean('is_dlc')->default(false);
         });
 

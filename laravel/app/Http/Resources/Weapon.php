@@ -16,10 +16,10 @@ class Weapon extends JsonResource
     {
         return [
             'id' => $this->id,
+            'classes' => $this->animalClass->pluck('id')->toArray(),
             'name' => $this->name,
             'weaponNo' => $this->weapon_no,
             'type' => $this->type,
-            'class' => $this->animalClass,
             'ammunition' => Ammunition::collection($this->ammunition),
         ];
     }

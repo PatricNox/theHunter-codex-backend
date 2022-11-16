@@ -12,7 +12,7 @@ class Animal extends Base\BaseModel
     protected $fillable = [
         'name',
         'trophy_id',
-        'class_id',
+        'animal_class_id',
         'max_difficulty',
         'max_weight',
         'is_dlc',
@@ -66,7 +66,7 @@ class Animal extends Base\BaseModel
     }
 
     /**
-     * Get the weapons used for the animal.
+     * Get the ammunition for the possible weapons.
      */
     public function getAmmunitionAttribute()
     {

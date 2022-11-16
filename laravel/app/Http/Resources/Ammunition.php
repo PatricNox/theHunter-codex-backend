@@ -16,6 +16,7 @@ class Ammunition extends JsonResource
     {
         return [
             'id' => $this->id,
+            'classes' => $this->animalClass->pluck('id')->toArray(),
             'name' => $this->name,
             'ammunitionNo' => $this->ammunition_no,
         ];

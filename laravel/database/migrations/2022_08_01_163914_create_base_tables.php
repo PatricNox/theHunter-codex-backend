@@ -35,12 +35,18 @@ class CreateBaseTables extends Migration
             $table->string('name');
         });
 
-        // Dynamic, relation
         Schema::create('ammunitions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
         });
 
+        Schema::create('callers', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->boolean('is_dlc')->default(false);
+        });
+
+        // Dynamic, relation
         Schema::create('animals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -60,7 +66,12 @@ class CreateBaseTables extends Migration
             $table->string('diamond');
         });
 
-        // Weapon
+        Schema::create('animal_caller', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('animal_id')->constrained();
+            $table->foreignId('caller_id')->constrained();
+        });
+
         Schema::create('weapons', function (Blueprint $table) {
             $table->id();
             $table->foreignId('weapon_type_id')->constrained();

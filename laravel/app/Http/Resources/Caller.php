@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Animal extends JsonResource
+class Caller extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,13 +17,8 @@ class Animal extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'trophy' => $this->trophy->type,
-            'ratings' => new AnimalRating($this->ratings),
-            'maxDifficulty' => $this->max_difficulty,
-            'maxWeight' => $this->max_weight,
-            'class' => $this->animalClass->id,
-            'weapons' => Weapon::collection($this->weapons),
-            'callers' => Caller::collection($this->callers),
+            'isDLC' => $this->is_dlc,
+            'animal' => $this->animals->pluck("id")->toArray(),
         ];
     }
 }

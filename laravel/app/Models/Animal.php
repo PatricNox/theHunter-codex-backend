@@ -19,6 +19,14 @@ class Animal extends Base\BaseModel
     ];
 
     /**
+     * Get the animal class for the animal.
+     */
+    public function animalClass()
+    {
+        return $this->belongsTo(AnimalClass::class);
+    }
+
+    /**
      * Get the maps for the animal.
      */
     public function maps()
@@ -43,11 +51,11 @@ class Animal extends Base\BaseModel
     }
 
     /**
-     * Get the animal class for the animal.
+     * Get the callers for the caller animal.
      */
-    public function animalClass()
+    public function callers()
     {
-        return $this->belongsTo(AnimalClass::class);
+        return $this->belongsToMany(Caller::class);
     }
 
     /**

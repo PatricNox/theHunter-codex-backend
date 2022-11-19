@@ -30,7 +30,6 @@ _Package managers_
 
 Please read and follow the [SETUP guideline](help/SETUP.md) thouroughly. 
 
-Don't be afraid to ask any colleague for assistance!
 
 ## Special features and good-to-know's
 
